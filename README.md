@@ -28,3 +28,8 @@
 6. Upon the prescription being created, the customer's card is charged and we dispatch
    the medicine.
    - This requirement slightly confuses me, is it a monthly subscription or a one off payment? If its a one off then we just need to finalise an invoice.
+
+
+## notes:
+ - Ideally the contents of the api package would be in a separate library, so they can be used by other applications.
+ - I have written some tests to demonstrate how I would go about testing this, but have not spent the time fully implementing all tests
