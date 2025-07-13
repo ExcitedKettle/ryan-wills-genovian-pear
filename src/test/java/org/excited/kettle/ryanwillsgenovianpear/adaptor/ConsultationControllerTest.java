@@ -2,7 +2,7 @@ package org.excited.kettle.ryanwillsgenovianpear.adaptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.excited.kettle.ryanwillsgenovianpear.model.MultipleChoiceQuestion;
-import org.excited.kettle.ryanwillsgenovianpear.model.MultipleChoiceQuestionnaire;
+import org.excited.kettle.ryanwillsgenovianpear.model.ConsultationQuestionnaire;
 import org.excited.kettle.ryanwillsgenovianpear.service.ConsultationQuestionnaireLookupService;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = ConsultationController.class)
+@WebMvcTest(controllers = ControllerConsultation.class)
 class ConsultationControllerTest {
 
     @Autowired
@@ -44,7 +44,7 @@ class ConsultationControllerTest {
                     .withQuestion("which option?")
                     .build();
 
-            final MultipleChoiceQuestionnaire questionnaire = new MultipleChoiceQuestionnaire(List.of(question));
+            final ConsultationQuestionnaire questionnaire = new ConsultationQuestionnaire(List.of(question), List.of(), "pear questionnaire");
 
             given(consultationQuestionnaireLookupService.getQuestionnaireForProduct(product)).willReturn(questionnaire);
 
@@ -54,7 +54,7 @@ class ConsultationControllerTest {
                     .andReturn()
                     .getResponse()
                     .getContentAsString();
-            final MultipleChoiceQuestionnaire actual = objectMapper.readValue(response, MultipleChoiceQuestionnaire.class);
+            final ConsultationQuestionnaire actual = objectMapper.readValue(response, ConsultationQuestionnaire.class);
             assertThat(actual).isEqualTo(questionnaire);
         }
     }

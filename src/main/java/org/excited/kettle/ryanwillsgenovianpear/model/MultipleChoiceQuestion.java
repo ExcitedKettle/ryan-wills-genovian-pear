@@ -1,21 +1,14 @@
 package org.excited.kettle.ryanwillsgenovianpear.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
 import org.excited.kettle.ryanwillsgenovianpear.api.ConsultationQuestion;
 
 import java.util.List;
+import java.util.UUID;
 
-@AllArgsConstructor
 @Builder(setterPrefix = "with")
-@Getter
-@ToString
-@EqualsAndHashCode
-public class MultipleChoiceQuestion implements ConsultationQuestion {
-
-    private List<String> options;
-    private String question;
+public record MultipleChoiceQuestion(List<String> options,
+                                     String question,
+                                     int questionNumber,
+                                     UUID questionId) implements ConsultationQuestion {
 }

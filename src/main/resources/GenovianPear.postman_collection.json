@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "486cb380-41b9-4f07-b3f6-66f9cb2d4cb9",
+		"name": "GenovianPear",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34632296"
+	},
+	"item": [
+		{
+			"name": "Get Questionnaire",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/consultation/questionnaire?product=pear",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consultation",
+						"questionnaire"
+					],
+					"query": [
+						{
+							"key": "product",
+							"value": "pear"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Consultation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"questionnaireName\":\"pearQuestionnaire\",\r\n    \"answers\": [\r\n        {\r\n            \"answer\": \"Other\",\r\n            \"questionId\": \"bb3dc3f3-374e-4f7e-bdc3-f3374e3f7e84\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/consultation",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consultation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Consultation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/consultation?id =bb3dc3f3-374e-4f7e-bdc3-f3374e3f7e84",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consultation"
+					],
+					"query": [
+						{
+							"key": "id ",
+							"value": "bb3dc3f3-374e-4f7e-bdc3-f3374e3f7e84"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

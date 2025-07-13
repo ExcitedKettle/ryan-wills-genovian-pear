@@ -33,3 +33,28 @@
 ## notes:
  - Ideally the contents of the api package would be in a separate library, so they can be used by other applications.
  - I have written some tests to demonstrate how I would go about testing this, but have not spent the time fully implementing all tests
+ - I have provided an api for looking up a consultation (though with very limited data presently) - notionally my thinking is that when a consultation is created a DR is async notified and will update the consultation appropriately.
+ - I ran out of time to implement validation that all questions are answered but have commented in `ConsultationQuestionnaireStorageService` where I would do that validation (probably with a rules engine).
+
+## Running the application
+- Basic spring boot application, you should be able to right click `RyanWillsGenovianPearApplication` -> run, if there are issues you may need to do a maven clean install and make sure you are running java 24+
+- I have attached a postman collection to the resources folder for your convenience, failing that curl requests are below with examples
+
+### Get Questionnaire
+curl --location 'localhost:8080/consultation/questionnaire?product=pear'
+
+### Create Request
+curl --location 'localhost:8080/consultation' \
+--header 'Content-Type: application/json' \
+--data '{
+"questionnaireName":"pearQuestionnaire",
+"answers": [
+{
+"answer": "Other",
+"questionId": "bb3dc3f3-374e-4f7e-bdc3-f3374e3f7e84"
+}
+]
+}'
+
+### Lookup consultation
+curl --location 'localhost:8080/consultation?id%20=bb3dc3f3-374e-4f7e-bdc3-f3374e3f7e84'
